@@ -70,5 +70,16 @@ h1 {
     z-index: 1000;
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.553);
+    background-color: rgba(255, 255, 255, 0.668);
+}
+
+.image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
 }

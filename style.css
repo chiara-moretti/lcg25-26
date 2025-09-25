@@ -30,6 +30,9 @@ body {
     font-family: 'Satoshi-light', 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -82,4 +85,27 @@ h1 {
     object-fit: cover;
     z-index: -1;
     pointer-events: none;
+}
+
+.pop-up {
+    margin: auto;
+    padding: 10px;
+    background-color:rgba(0, 0, 139, 0.51);
+    display:flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.lezioni {
+    padding: 0;
+    display:flex;
+    width: fit-content;
+    flex-direction: column;
+    color: white;
+}
+
+a {
+    color: white;
 }

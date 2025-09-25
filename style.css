@@ -47,6 +47,19 @@ h1 {
     color: #0a66c2;
 }
 
+h3 {
+    text-align: center;
+    font-family: 'Satoshi-Bold', 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 24px;
+    color: #001f42;
+    padding: 40px;
+    background-color: #fdfeffa5;
+    transition: color 200ms ease;
+}
+
+.h3 a:hover h3 {
+    color: #0a66c2;
+}
 
 .top-navbar {
     background-color: #001f42;

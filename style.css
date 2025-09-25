@@ -29,16 +29,17 @@
 body {
     font-family: 'Satoshi-light', 'Helvetica Neue', Helvetica, sans-serif;
     font-size: 16px;
+    margin: 0;
 }
 
 h1 {
+    padding: 40px;
     font-family: 'Satoshi-Bold', 'Helvetica Neue', Helvetica, sans-serif;
-
+    text-align: center;
 }
 
-.navbar {
+.top-navbar {
     background-color: #c2d0d4;
-    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -53,8 +54,21 @@ h1 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-class="logo" {
+.logo-image {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 40px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    width: auto;
+    height: auto;
+}
+
+.navbar-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.553);
 }

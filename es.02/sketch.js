@@ -45,6 +45,8 @@ function draw() {
 
   fill("#f5e35f");
   quad(280, 470, 300, 470, 280, 600, 300, 600);
+  circle(210, 534, 10, 20);
+  circle(290, 534, 10, 20);
 
   fill("#000000ff");
   rect(200, 600, 20, 25);
@@ -66,11 +68,66 @@ function draw() {
   rect(190, 470, 40, 20);
   rect(270, 470, 40, 20);
 
+  //cravatta
   fill("#ff0000ff");
   triangle(240, 400, 260, 400, 250, 420);
-
   fill("#ff0000ff");
   quad(250, 420, 260, 460, 250, 480, 240, 460);
-  
-}
 
+  //occhi
+  //pupille
+  fill("#ffffffff");
+  circle(210, 290, 50);
+  circle(290, 290, 50);
+  //iride
+  fill("#009df8ff");
+  circle(210, 295, 25);
+  circle(290, 295, 25);
+  //nero
+  fill("#000000ff");
+  circle(210, 295, 10);
+  circle(290, 295, 10);
+
+  //naso
+  fill("#f5e35f");
+  arc(250, 310, 15, 30, PI, 0);
+
+  //ciglia
+  stroke("#000000ff");
+  strokeWeight(4);
+  line(210, 250, 210, 263);
+  line(180, 260, 190, 272);
+  line(230, 272, 240, 263);
+
+
+  line(290, 250, 290, 263);
+  line(310, 272, 320, 263);
+  line(260, 260, 270, 272);
+
+
+  noStroke();
+  
+  
+  //bocca
+  noFill();
+  stroke("#000000ff");
+  strokeWeight(2);
+  arc(250, 320, 80, 60, 0, PI); 
+
+  //fossette
+  fill("#f5e35f");
+  arc(210, 320, 20, 20, PI, 0);
+  arc(290, 320, 20, 20, PI, 0);
+
+  //denti
+  fill("#ffffffff");
+  rect(238, 350, 10, 20);
+  rect(252, 350, 10, 20);
+
+  //braccia
+  quad(220, 370, 280, 370, 270, 400, 230, 400);
+
+  push();
+  pop();
+
+  }

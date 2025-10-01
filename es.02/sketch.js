@@ -1,9 +1,9 @@
 // variabili globali
-let xMax = 400;
-let yMax = 600;
+let xMax = 500;
+let yMax = 830;
 
-let xrocket = xMax/2;
-let yrocket = yMax*0.6;
+let xrect = xMax/2;
+let yrect = yMax*0.8;
 
 function setup() {
   createCanvas(xMax, yMax);
@@ -14,94 +14,63 @@ function draw() {
   background("#14344eff"); //blu chiaro
   //mostrare un testo bianco che dice le coordinate del mouse sul foglio da disegno
   fill(255); //bianco
-  text("mouseX: " + mouseX + "mouseY: " + mouseY,20,20);
+  text("mouseX: " + mouseX + ", mouseY: " + mouseY, 20, 20);
 
-    push();
-  //3 cicli
-  push();
-  // 3 cicli
+  fill("#f5e35f");
+  // Trapezio attaccato sopra al rettangolo
+  // Rettangolo: rect(160, 400, 180, 50)
+  // Base inferiore del trapezio: da 160 a 340 (larghezza 180, coincide con il rettangolo)
+  // Base superiore più grande, da 120 a 380 (larghezza 260)
+  // Aumento ancora la distanza verticale tra le basi: y superiore = 180
+  quad(140, 200, 360, 200, 340, 400, 160, 400);
 
-  noStroke()
-  // unico ciclo
-  // creare una sequenza x fare a, b, c
-  for(let i=0;i < 120; i++){
-    let starX = random(width);
-    let starY = random(height);
-    // operatore modulo %
-    // stella a quando i è pari
-    if( i % 2 == 0 ){
-      //stella tipo a
-    fill(255,255,150);
-    ellipse(starX,starY,1); //1
-    } else if (i % 3 == 40) {
-      //stella b
-      fill(200, 100, 25);
-      ellipse(starX,starY,1.5); //1.5
-    } else {
-      // stella c
-      fill(255,255,100);
-      ellipse(starX,starY, 2.8); //2.8
-    }
+  fill("#422a11ff");
+  rect(160, 400, 180, 70, 0, 0, 0, 0);
 
-    }
+  fill("#ffffffff");
+  rect(160, 400, 180, 30, 0, 0, 0, 0);
 
-  push();
-  // 3 cicli
+  fill("#000000ff");
+  rect(160, 440, 40, 10);
+  rect(300, 440, 40, 10);
+  rect(220, 440, 60, 10);
 
   
+  fill("#f5e35f");
+  // Trapezio invertito: base piccola sopra, base grande sotto
+  // Base superiore grande, base inferiore piccola
+  // Trapezio invertito con asse verticale dritto
+  // Vertici superiori centrati rispetto a quelli inferiori
+  quad(200, 470, 220, 470, 200, 600, 220, 600);
 
-  noStroke()
-  // unico ciclo
-  // creare una sequenza x fare a, b, c
-  for(let i=0;i < 120; i++){
-    let starX = (i*37) % width + (i%3) * 5;
-    let starY = ((i*73) % height) + (i%7);
-    // operatore modulo %
-    // stella a quando i è pari
-    if( i % 2 == 0 ){
-      //stella tipo a
-    fill(255,255,150);
-    ellipse(starX,starY,1); //1
-    } else if (i % 3 == 0) {
-      //stella b
-      fill(200, 100, 25);
-      ellipse(starX,starY,1.5); //1.5
-    } else {
-      // stella c
-      fill(255,255,100);
-      ellipse(starX,starY, 2.8); //2.8
-    }
+  fill("#f5e35f");
+  quad(280, 470, 300, 470, 280, 600, 300, 600);
 
-    }
+  fill("#000000ff");
+  rect(200, 600, 20, 25);
 
-    //aprire contesto di disegno
-  push();
-  fill(150); //grigio
-  stroke(40);
-  rectMode(CENTER); //disegno il rettangolo dal centro
-  rect(xrocket, yrocket+30, 80, 180, 20); //l'ultimo valore è il corner radius, smoothness
-  //rettangolo
+  fill("#000000ff");
+  rect(280, 600, 20, 25);
 
-  //triangolo
-  fill(200, 40, 40); //rosso
-  triangle(xrocket-40, yrocket-60, xrocket+40, yrocket-60, xrocket, yrocket-120);
+  quad(200, 600, 200, 625, 200, 625, 180, 625);
+  quad(300, 600, 300, 625, 300, 625, 320, 625);
 
-  //cerchio
-  fill(40, 150, 220); //azzurro
-  stroke(255);
-  strokeWeight(3);
-  ellipse(xrocket, yrocket+30, 48, 48);
-  //finire il contesto
+  circle(182, 615, 20);
+  // Cerchio specchiato rispetto a quello a sinistra (182, 615, 20)
+  // Quello a sinistra è a (182, 615), quello a destra deve essere simmetrico rispetto al centro del rettangolo
+  // Il rettangolo va da x=160 a x=340, centro x=250
+  // Distanza dal centro: 250 - 182 = 68, quindi il cerchio specchiato sarà a 250 + 68 = 318
+  circle(318, 615, 20);
+
+  fill("#422a11ff");
+  rect(190, 470, 40, 20);
+  rect(270, 470, 40, 20);
+
+  fill("#ff0000ff");
+  triangle(240, 400, 260, 400, 250, 420);
+
+  fill("#ff0000ff");
+  quad(250, 420, 260, 460, 250, 480, 240, 460);
   
-  frameRate(20);
-  yrocket = (yrocket - 1);
-   //wuando la yrocket sarà soprà una certa soglia, la faccio ricomparire in basso
-   let soglia = yMax*0.6;
-   if (yrocket < soglia) {
-    yrocket = yMax;
-   }
-
-  pop();
-
-  pop();
 }
+

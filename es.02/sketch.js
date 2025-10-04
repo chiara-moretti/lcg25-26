@@ -30,40 +30,29 @@ function draw() {
   fill("#ffffffff");
   rect(160, 400, 180, 30, 0, 0, 0, 0);
 
+  //cintura
   fill("#000000ff");
   rect(160, 440, 40, 10);
   rect(300, 440, 40, 10);
   rect(220, 440, 60, 10);
 
+  fill("#f5e35f");
+  // Gambe: rimpiazzo i quad con rect per poter arrotondare gli angoli superiori
+  // le gambe vanno da y=470 a y=600 (altezza 130), larghezza 20
+  rect(203, 470, 15, 130, 20, 20, 0, 0);
+  rect(283, 470, 15, 130, 20, 20, 0, 0);
   
-  fill("#f5e35f");
-  // Trapezio invertito: base piccola sopra, base grande sotto
-  // Base superiore grande, base inferiore piccola
-  // Trapezio invertito con asse verticale dritto
-  // Vertici superiori centrati rispetto a quelli inferiori
-  quad(200, 470, 220, 470, 200, 600, 220, 600);
-
-  fill("#f5e35f");
-  quad(280, 470, 300, 470, 280, 600, 300, 600);
-  circle(210, 534, 10, 20);
-  circle(290, 534, 10, 20);
-
-  fill("#000000ff");
-  rect(200, 600, 20, 25);
-
+  //scarpe
   fill("#000000ff");
   rect(280, 600, 20, 25);
+  rect(200, 600, 20, 25);
 
-  quad(200, 600, 200, 625, 200, 625, 180, 625);
-  quad(300, 600, 300, 625, 300, 625, 320, 625);
+  quad(200, 601, 200, 620, 200, 620, 180, 625);
+  quad(300, 601, 300, 620, 300, 620, 320, 625);
+  circle(180, 615, 20);
+  circle(320, 615, 20);
 
-  circle(182, 615, 20);
-  // Cerchio specchiato rispetto a quello a sinistra (182, 615, 20)
-  // Quello a sinistra è a (182, 615), quello a destra deve essere simmetrico rispetto al centro del rettangolo
-  // Il rettangolo va da x=160 a x=340, centro x=250
-  // Distanza dal centro: 250 - 182 = 68, quindi il cerchio specchiato sarà a 250 + 68 = 318
-  circle(318, 615, 20);
-
+  //pantoloni
   fill("#422a11ff");
   rect(190, 470, 40, 20);
   rect(270, 470, 40, 20);
@@ -125,8 +114,23 @@ function draw() {
   rect(252, 350, 10, 20);
 
   //braccia
+  fill("#f5e35f");
+  // braccio sinistro: top y = 320, altezza 20
+  quad(155, 350, 153, 325, 80, 240, 80, 260);
+  quad(345, 350, 347, 325, 420, 240, 420, 260);
 
+  //mani
+  fill("#f5e35f");
   push();
+  rotate(PI / -6);
+  ellipse(-50, 265, 25, 40);
   pop();
 
-  }
+  push();
+  translate(500, 0);
+  scale(-1, 1);
+  rotate(PI / -6);
+  ellipse(-50, 265, 25, 40);
+  pop();  
+
+}

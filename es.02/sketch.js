@@ -125,7 +125,6 @@ function draw() {
   rect(252, 350, 10, 20);
 
   //braccia
-  quad(220, 370, 280, 370, 270, 400, 230, 400);
 
   push();
   pop();

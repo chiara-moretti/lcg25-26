@@ -19,6 +19,7 @@ function preload() {
 function setup() {
   createCanvas(xMax, yMax);
   frameRate(2);
+  //angleMode(DEGREES);
 }
 
 
@@ -94,7 +95,8 @@ function draw() {
 
 
   let variazionescala = scalaDiBase * Math.abs(sin(tempo));
-  ruota2 = 
+  // abs = valore assoluto
+
   drawStarsFromFile();
   drawRocket(xRocket, yRocket, variazionescala, ruota2); 
 
@@ -104,4 +106,21 @@ function draw() {
   tempo += 4;
   ruota2 += 1;
 
+}
+
+
+function mousePressed() {
+  // fermiamo l'animazione o la rifacciamo partire se clicchiamo il mouse
+  // per fermare l'animazione basta scrivere noLoop()
+  // ma noi vogliamo due opzioni quindi dobbiamo creare un algoritmo
+  if(isLooping()){
+    //funzione già implementata da qualcuno
+    noLoop();
+  }else{
+    loop();
+  }
+
+  let isover=false;
+  if(isMouseOverRocket()){
+  }
 }

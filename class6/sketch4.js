@@ -1,3 +1,10 @@
+/*
+  sketch4.js
+  - Grafici destri linea (Charlie) + tre istogrammi a tutta pagina per ciascun dataset.
+  - Sezione istogrammi: per ogni dataset due pannelli
+    (x_vel vs x_pos in alto, y_vel vs y_pos in basso) con linea dello zero.
+  - Ridimensionamento responsive su windowResized.
+*/
 // p5 instance mode per grafico dataset 3 (drone_charlie: x_vel, y_vel)
 const chartCharlie = (p) => {
   let table = null;

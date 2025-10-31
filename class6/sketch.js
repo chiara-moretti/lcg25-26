@@ -1,3 +1,11 @@
+/*
+  sketch.js
+  - Vista 3D interattiva (p5.js WEBGL) che visualizza le traiettorie dei tre droni.
+  - Layout: metà sinistra dello schermo con legenda, caption e controlli.
+  - Controlli: sliders rotazione XYZ, auto-rotazione con velocità.
+  - Dati: letti da CSV (alfa, bravo, charlie) e resi come punti 3D.
+*/
+
 let rotXSlider, rotYSlider, rotZSlider;
 let autoRotateCheckbox, speedSlider;
 let tableAlfa, tableBravo, tableCharlie;
@@ -9,6 +17,7 @@ let axisLength = 500; // Assi ancora più lunghi per un piano più grande
  
  
 
+// Carica i tre dataset CSV in memoria (eseguito prima di setup)
 function preload() {
   // Carica il dataset del drone alfa
   tableAlfa = loadTable('dataset/drone_alfa_data.csv', 'csv', 'header');
@@ -17,6 +26,7 @@ function preload() {
   tableCharlie = loadTable('dataset/drone_charlie_data.csv', 'csv', 'header');
 }
 
+// Inizializza canvas WEBGL, UI (legenda/caption/controlli) e prepara i dati
 function setup() {
   // Calcola le dimensioni del canvas basandosi sul container
   const container = document.getElementById('viewport-container');
@@ -78,7 +88,7 @@ function setup() {
   addLegendItem('rgb(100,180,255)', 'Bravo');
   addLegendItem('rgb(160,120,255)', 'Charlie');
 
-  // Controls container
+  // Controls container: griglia 2 colonne (etichetta + controllo)
   const controls = createDiv();
   controls.parent('viewport-container');
   controls.style('display', 'grid');
@@ -112,7 +122,7 @@ function setup() {
   speedSlider.parent(controls);
   speedSlider.style('width', '100%');
 
-  // Carica e prepara i dati per i tre dataset
+  // Carica e prepara i dati per i tre dataset (scalati per leggibilità)
   if (tableAlfa) {
     const rowCount = tableAlfa.getRowCount();
     for (let i = 0; i < rowCount; i++) {
@@ -180,6 +190,7 @@ function setup() {
   }
 }
 
+// Mantiene canvas responsivo al resize della finestra
 function windowResized() {
   // Ricalcola le dimensioni quando la finestra viene ridimensionata
   const container = document.getElementById('viewport-container');
@@ -196,6 +207,7 @@ function windowResized() {
   resizeCanvas(canvasWidth, canvasHeight);
 }
 
+// Loop di rendering: luci, controlli orbitali, rotazioni e disegno
 function draw() {
   background(24);
   orbitControl(2, 2, 0.2); // opzionale: drag per esplorare
@@ -220,6 +232,7 @@ function draw() {
   drawDataPoints();
 }
 
+// Disegna i punti per ciascun drone con colori distinti
 function drawDataPoints() {
   // Disegna tutti i punti
   push();
@@ -260,6 +273,7 @@ function drawDataPoints() {
 
  
 
+// Disegna piani semitrasparenti, griglie e assi X/Y/Z con tacche
 function drawAxesAndGrids(axisLength) {
   const gridStep = 20;
   const half = axisLength;
@@ -345,6 +359,7 @@ function drawAxesAndGrids(axisLength) {
   // (Etichette rimosse per ripristinare il comportamento precedente)
 }
 
+// Cono di freccia all'estremità degli assi orientato secondo 'direction'
 function drawArrowHead(endpoint, direction, col) {
   push();
   translate(endpoint.x, endpoint.y, endpoint.z);

@@ -1,3 +1,9 @@
+/*
+  sketch3.js
+  - Grafico lineare (p5 instance) per il dataset Bravo: x_vel e y_vel nel tempo.
+  - Canvas nel riquadro destro centrale (#chart2), dimensioni responsive.
+  - Assi con griglia leggera e legenda colori.
+*/
 // p5 instance mode per grafico dataset 2 (drone_bravo: x_vel, y_vel)
 const chartBravo = (p) => {
   let table = null;

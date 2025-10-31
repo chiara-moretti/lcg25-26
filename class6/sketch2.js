@@ -1,3 +1,9 @@
+/*
+  sketch2.js
+  - Grafico lineare (p5 instance) per il dataset Alfa: x_vel e y_vel nel tempo.
+  - Canvas nel riquadro destro in alto (#chart), dimensioni responsive.
+  - Assi con griglia leggera e legenda colori.
+*/
 // p5 instance mode per grafico destro (ultime due colonne del primo dataset: x_vel, y_vel)
 const rightChart = (p) => {
   let table = null;

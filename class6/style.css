@@ -5,11 +5,20 @@ html, body {
 body {
   margin: 0;
   display: flex;
+  flex-direction: column; /* colonne sopra, istogramma sotto */
   align-items: stretch;
   justify-content: flex-start;
   background: #141414;
   color: #e8e8e8;
   font-family: Helvetica, Arial, sans-serif;
+}
+#top-row {
+  display: flex;
+  width: 100vw;
+}
+
+#bottom-row {
+  width: 100vw;
 }
 
 /* Navbar */
@@ -84,6 +93,11 @@ body {
 }
 
 #chart, #chart2, #chart3 {
+  width: 100%;
+  max-width: 100%;
+}
+
+#histogram, #histogram2, #histogram3 {
   width: 100%;
   max-width: 100%;
 }

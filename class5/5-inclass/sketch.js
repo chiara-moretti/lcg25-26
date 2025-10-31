@@ -11,24 +11,15 @@ let scalaDiBase = 1;
 let ruota2 = 1;
 
 function preload() {
-  table = loadTable("stars.csv", "csv", "header", function() {
-    console.log("Stars CSV loaded successfully!");
-  }, function() {
-    console.error("Failed to load stars.csv");
-  });
-  star_img = loadImage("star.png", function() {
-    console.log("Star image loaded successfully!");
-  }, function() {
-    console.error("Failed to load star.png");
-  });
+  table = loadTable("stars.csv", "csv", "header");
+  star_img = loadImage("star.png");
 }
 
 
 function setup() {
   createCanvas(xMax, yMax);
   frameRate(2);
-  angleMode(DEGREES);
-  console.log("Setup complete! Canvas created.");
+  //angleMode(DEGREES);
 }
 
 
@@ -37,7 +28,7 @@ function drawStarsFromFile() {
   for(let k = 0; k < table.getRowCount(); k++) {
     let starX = (k*37) % width + (k%3) * 5;
     let starY = (k*73) % height + (k%7);
-    let starSize = table.getNum(k, "starSize");
+    let starSize = table.getNum(k, "starSize")
     image(star_img, starX, starY, starSize, starSize);
 //altezza e ampiezza dell'immagine dipendono da una variabile (starSize) presa dal file csv --> file esterni preso come una tabella
   }
@@ -97,16 +88,11 @@ function moveRocket(yRocket, step=1) {
 function draw() {
   background("#C0E1FC");
 
-  fill(0); //nero
+  fill(0); //bianco
   textSize(20);
-  text("mouseX: " + mouseX + ", mouseY: " + mouseY, 20, 20);
+  text("mouseX: " + mouseX + ",\
+     mouseY: " + mouseY,20,20);
 
-  // Check if files are loaded
-  if (!table || !star_img) {
-    fill(255, 0, 0);
-    text("Loading files...", 20, 60);
-    return;
-  }
 
   let variazionescala = scalaDiBase * Math.abs(sin(tempo));
   // abs = valore assoluto
@@ -114,7 +100,7 @@ function draw() {
   drawStarsFromFile();
   drawRocket(xRocket, yRocket, variazionescala, ruota2); 
 
-  xRocket = (xRocket + 1) % xMax;
+  xRocket = (xRocket +1) % xMax;
   yRocket = moveRocket(yRocket); 
 
   tempo += 4;
@@ -132,5 +118,9 @@ function mousePressed() {
     noLoop();
   }else{
     loop();
+  }
+
+  let isover=false;
+  if(isMouseOverRocket()){
   }
 }

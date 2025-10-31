@@ -18,18 +18,45 @@ function preload() {
 }
 
 function setup() {
-  const canvas = createCanvas(900, 600, WEBGL);
+  // Calcola le dimensioni del canvas basandosi sul container
+  const container = document.getElementById('viewport-container');
+  const containerWidth = container.clientWidth - 20; // sottrai padding
+  const containerHeight = container.clientHeight;
+  
+  // Riserva spazio per legenda, caption e controlli (stimato ~200px)
+  const reservedSpace = 250;
+  const availableHeight = containerHeight - reservedSpace;
+  
+  // Il canvas occupa tutta la larghezza disponibile e si adatta all'altezza
+  const canvasWidth = containerWidth;
+  const canvasHeight = availableHeight;
+  
+  const canvas = createCanvas(canvasWidth, canvasHeight, WEBGL);
   canvas.parent('viewport');
   angleMode(DEGREES);
   noStroke();
 
-  // Legend (in alto)
+  // Legend (in alto, prima del canvas) - inserita all'inizio del container
+  const viewportDiv = document.getElementById('viewport');
   const legend = createDiv();
-  legend.parent('viewport-container');
+  legend.id('legend-container');
   legend.style('display', 'flex');
   legend.style('gap', '16px');
   legend.style('align-items', 'center');
-  legend.style('margin', '8px 0');
+  legend.style('justify-content', 'center');
+  legend.style('padding', '10px 0');
+  legend.style('width', '100%');
+  legend.style('flex-shrink', '0');
+  // Inserisce la legenda prima del viewport
+  container.insertBefore(legend.elt, viewportDiv);
+
+  // Caption descrittiva sotto al grafico 3D
+  const caption = createP('Questo grafico 3D rappresenta le coordinate (x, y, z) dei droni.');
+  caption.parent('viewport-container');
+  caption.style('margin', '6px 0 2px 0');
+  caption.style('font-size', '14px');
+  caption.style('color', '#cfcfcf');
+  caption.style('flex-shrink', '0');
 
   function addLegendItem(rgb, label) {
     const item = createDiv();
@@ -58,6 +85,7 @@ function setup() {
   controls.style('grid-template-columns', 'auto 1fr');
   controls.style('gap', '8px 12px');
   controls.style('width', '100%');
+  controls.style('flex-shrink', '0');
 
   // Rotation sliders
   createSpan('Rotazione X (°)').parent(controls);
@@ -150,6 +178,22 @@ function setup() {
     }
     console.log(`Caricati ${dataPointsCharlie.length} punti da drone_charlie`);
   }
+}
+
+function windowResized() {
+  // Ricalcola le dimensioni quando la finestra viene ridimensionata
+  const container = document.getElementById('viewport-container');
+  const containerWidth = container.clientWidth - 20; // sottrai padding
+  const containerHeight = container.clientHeight;
+  
+  // Riserva spazio per legenda, caption e controlli
+  const reservedSpace = 250;
+  const availableHeight = containerHeight - reservedSpace;
+  
+  const canvasWidth = containerWidth;
+  const canvasHeight = availableHeight;
+  
+  resizeCanvas(canvasWidth, canvasHeight);
 }
 
 function draw() {
